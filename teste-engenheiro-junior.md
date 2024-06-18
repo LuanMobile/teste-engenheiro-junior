@@ -2,51 +2,55 @@
 
 Nesse teste analisaremos seu conhecimento geral, velocidade de desenvolvimento e capacidade de melhoria.
 
+## Descrição
+
+Aplicação desenvolvida como parte do teste prático para a vaga em questão. Sendo uma aplicação de cadastro de pedidos de compras, composta por uma Api desenvolvida com Laravel e o FrontEnd por NuxtJs.
+
+Principais recursos:
+
+* Api
+* Autenticação com o Sanctum
+* Repository Pattern
+* CRUD de clientes
+* CRUD de produtos
+* CRUD de pedidos
+
 ## Instruções
 
-Utilizando o framework PHP Laravel, e um banco de dados relacional SQLite, MySQL ou Postgres, você vai criar uma aplicação de cadastro de pedidos de compra com as seguintes funcionalidades:
+Tenha o Php 8.2, Docker, Docker-compose instalados e rodando na máquina.
 
-- CRUD de clientes.
-- CRUD de produtos.
-- CRUD de pedidos de compra, com status (Em Aberto, Pago ou Cancelado).
-- Cada CRUD:
-  - conter lista dos itens cadastrado, com filtros e ordenação para tods os campos apresentados.
-  - deve possuir formulários para criação e atualização de seus itens.
-  - deve permitir a deleção de qualquer item de sua lista.
-    
-- API Rest JSON para todos os CRUDS listados.
+Acesse a pasta <strong>backend</strong> end e rode os comandos
 
-## Banco
+```sh
 
-- O banco de dados deve ser criado utilizando Migrations do framework Laravel, e também utilizar Seeds e Factorys para popular as informações no banco de dados.
-- Implementação das validações necessárias.
+$ cp .env.example .env
 
-## Tecnologias:
+$ sail up -d
 
-- HTML
-- CSS
-- Javascript(Poderá ser utilizado frameworks)
-- Framework Laravel (PHP)
-- Docker (construção do ambiente de desenvolvimento)
+$ sail composer install
 
-## Entrega
+$ sail artisan key:generate
 
-- Para iniciar o teste, faça um fork deste repositório; **Se você apenas clonar o repositório não vai conseguir fazer push.**
-- Crie uma branch com o seu nome completo;
-- Altere o arquivo teste-engenheiro-junior.md com as informações necessárias para executar o seu teste (comandos, migrations, seeds, etc);
-- Depois de finalizado, envie-nos o pull request;
+```
 
-## Bônus
+Projeto rodando e banco conectado, agora rode as migrations e as seeders
 
-- Implementar autenticação de usuário na aplicação.
-- Implementar aplicação de desconto em alguns pedidos de compra.
+```sh
+$ sail artisan migrate
 
+$ sail artisan db:seed
 
-## O que iremos analisar
+```
 
-- Organização do código;
-- Aplicação de design patterns;
-- Separação de módulos e componentes;
-- Legibilidade;
-- Criação do ambiente com Docker.
-- Inovação e melhorias.
+Tudo pronto, a api já está rodando
+Agora suba só rodar o frontend
+
+```sh
+
+$ cd ../frontend
+
+$ npm install
+
+$ npm run dev
+
+```
